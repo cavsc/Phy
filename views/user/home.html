@@ -1,0 +1,63 @@
+{{ define "user/home.html" }}
+{{template "public/header" .}}
+<div class="row text-center">
+<div class="col-md-12">
+  <h2 class="animated fadeInDown">Welcome to <span>eKPI</span></h2>
+  <p class="animated fadeInUp text-des">Protein phosphorylation is one of the most widely studied post-translational modification which regulates cell growth, differentiation, apoptosis, signaling and many other cellular functions. Alterations in phosphorylation result in serious outcomes in the form of diseases, especially cancer. With the development of deep learning, more and more models have been applied to predict phosphorylation sites. With the rapid development of proteomics technology, a large number of phosphorylated proteome data sets and clinical multiomics data have been generated. Thus, a comprehensive one-stop data resource for surfing the big data will be very useful to the community.</p>
+  <p class="animated fadeInUp text-des">xx collates all xx phosphorylation site data in Homo sapiens, which incorporats 7 predicted kinase-substrate site interactions predicted by different models, quantitative phosphorylated proteome data from qPTM, and cancer-related clinical multiomics data collated in xxx papers.</p></div>
+</div>
+<form id="simple_search_form" action="result" method="post" onsubmit="return check_simple_search_form()">
+  <input type="hidden" name="type" value="search">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-2">
+      <select class="form-control my-select-tag" id="simple_search_tag0" name="simple_search_tag0">
+        <option value="Context">Any Field</option>
+        <option value="uniprotId">UniProt Id</option>
+        <option value="genename">Gene Name</option>
+        <option value="proteinname">Protein Name</option>
+        <option value="func">Function</option>
+        <!-- <option value="samdetail">Sample</option> -->
+      </select>
+    </div>
+    <div class="col-md-6">
+      <input class="form-control" type="text" placeholder="e.g. A0A0A0MS01" id="simple_search_input0" name="simple_search_input0">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-1"></div>
+
+    <div class="col-md-2">
+      <!-- <select class="form-control my-select-mod" name="simple_search_org" id="simple_search_org">
+        <option value="All">All organisms</option>
+        <option value="Human">Human</option>
+        <option value="Mouse">Mouse</option>
+        <option value="Rat">Rat</option>
+        <option value="Yeast">Yeast</option>
+      </select> -->
+    </div>
+
+    <div class="col-md-2">
+      <!-- <select class="form-control my-select-mod" name="simple_search_mod" id="simple_search_mod">
+        <option value="All">All modifications</option>
+        <option value="Acetylation">Acetylation</option>
+        <option value="Glycosylation">Glycosylation</option>
+        <option value="Metylation">Metylation</option>
+        <option value="Phosphorylation">Phosphorylation</option>
+        <option value="SUMOylation">SUMOylation</option>
+        <option value="Ubiquitylation">Ubiquitylation</option>
+      </select> -->
+    </div>
+    <div class="col-md-2">
+      <button type="button" class="form-control btn btn-mine" id="Example">Example</button>
+    </div>
+    <div class="col-md-2">
+      <button type="reset" class="form-control btn btn-mine">Clear</button>
+    </div>
+    <div class="col-md-2">
+      <button type="submit" class="form-control btn btn-mine">Submit</button>
+    </div>
+  </div>
+</form>
+{{template "public/footer" .}}
+{{ end }}

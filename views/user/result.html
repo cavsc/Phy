@@ -1,0 +1,161 @@
+{{ define "user/result.html" }}
+{{template "public/header" .}}
+
+<div class="card">
+    <div class="card-header"><h5 class="font-weight-bold">Result</h5></div>
+    <span id='rawQueryInfo' style='display:none'>{{.rawQueryInfos }}</span>
+    <div class='card-body alert-primary'>{{.showSearchStr}}</div>
+    <div class='card-body alert-success'>There are {{.count}} entries with your keyword(s).</div>
+    <div class='card-body'>
+        <table class='table table-responsive-sm text-center resultTable'>
+            <thead>
+                <tr>
+                    <th width='7%'>Detail</th>
+                    <th class='arrange' value='uniprotId' width='10%'>UniProt Id<i class='arrow ri-arrow-up-down-fill'></i></th>
+                    <th class='arrange' value='site' width="7%">Site<i class="arrow ri-arrow-up-down-fill"></i></th>
+                    <th class='arrange' value='genename' width="20%">GeneName<i class="arrow ri-arrow-up-down-fill"></i></th>
+                    <th class='arrange' value='proteinname' width="41%">ProteinName<i class="arrow ri-arrow-up-down-fill"></i></th>
+                    <th class='arrange' value='seq' width="15%">SequenceWindow<i class="arrow ri-arrow-up-down-fill"></i></th>
+                    <!-- <th class='arrange' value='gene' width='7%'>Gene<i class='arrow ri-arrow-up-down-fill'></i></th>
+                    <th class='arrange' value='pos' width='7%'>Position<i class='arrow ri-arrow-up-down-fill'></i></th>
+                    <th class='arrange' value='mods' width='11%'>Modification<i class='arrow ri-arrow-up-down-fill'></i></th>
+                    <th class='arrange' value='pep' width='14%'>SequenceWindow<i class='arrow ri-arrow-up-down-fill'></i></th>
+                    <th class='arrange' value='sample' width='9%'>Sample<i class='arrow ri-arrow-up-down-fill'></i></th>       		
+                    <th class='arrange' value='samplecondition' width='12%'>Condition<i class='arrow ri-arrow-up-down-fill'></i></th>       		
+                    <th class='arrange' value='qratio' width='10%'>Log2Ratio<i class='arrow ri-arrow-up-down-fill'></i></th>
+                    <th class='arrange' value='pvalue' width='8%'><i>P</i>&nbspvalue<i class='arrow ri-arrow-up-down-fill'></i></th>
+                    <th class='arrange' value='qptmscore' width='8%'>Reliability<i class='arrow ri-arrow-up-down-fill'></i></th> -->
+                </tr>
+                <thead class='table-light table-sm'><tr>
+                    <th><div class='form-control form-control-sm border-0'><i class='ri-search-line'></i></div></th>
+                    <th><input class='search-line form-control form-control-sm' type='text' name='uniprotId'></th>
+                    <th><input class='search-line form-control form-control-sm' type='text' name='site'></th>
+                    <th><input class='search-line form-control form-control-sm' type='text' name='genename'></th>
+                    <th><input class='search-line form-control form-control-sm' type='text' name='proteinname'></th>
+                    <th><input class='search-line form-control form-control-sm' type='text' name='seq'></th>
+                    <!-- <th><input class='search-line form-control form-control-sm' type='text' name='pos'></th>
+                    <th><input class='search-line form-control form-control-sm' type='text' name='mods'></th>
+                    <th><input class='search-line form-control form-control-sm' type='text' name='pep'></th>
+                    <th><input class='search-line form-control form-control-sm' type='text' name='sample'></th>
+                    <th><input class='search-line form-control form-control-sm' type='text' name='samplecondition'></th>
+                    <th><input class='search-line form-control form-control-sm' type='text' name='qratio'></th>
+                    <th><input class='search-line form-control form-control-sm' type='text' name='pvalue'></th> -->
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="tableChange">
+                {{range $index,$val := .data}}
+                <tr class='Table-line'>
+                    <td><i class='ri-add-circle-fill' value="{{$val.UniprotId}}|{{$val.Site}}|{{$val.Id}}"></i></td>
+                    <td>{{$val.UniprotId}}</td>
+                    <td>{{$val.Site}}</td>
+                    <td>{{$val.Genename}}</td>
+                    <td>{{$val.Proteinname}}</td>
+                    <td>{{$val.Seq}}</td>
+                </tr>
+                <tr class="Detail-line">
+                    <td colspan="11"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></td>
+                </tr>
+                {{end}}
+
+            </tbody>
+            </thead>
+        </table>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <span id="pageInfo">Showing {{.begin}} to {{.end}} of {{.count}} entries</span><span>, <select id="selectRowNumber"><option value="10">10</option><option value="20">20</option><option value="50">50</option><option value="100">100</option></select> entries per page</span>
+                </div>
+                <div class="col-md-6" id="pageButton">
+                    <nav aria-label="Page navigation" class="float-right">
+                        <ul class="pagination">
+                        {{if eq .flag 0}}
+                        {{else if eq .flag 1}}
+                            <li class='page-item disabled'>
+                                <span class='page-link'>&lt;</span>
+                            </li>
+                            <li class='page-item active'>
+                                <span class='page-link'>1</span>
+                            </li>
+                            <li class='page-item disabled'>
+                                <span class='page-link'>&gt;</span>
+                            </li>
+                        {{else if eq .flag 2}}
+                            <li class='page-item disabled'>
+                                <span class='page-link'>&lt;</span>
+                            </li>
+                            <li class='page-item active'>
+                                <span class='page-link'>1</span>
+                            </li>
+                            {{range $val:=.pagelist}}
+                                <li class='page-item'>
+                                    <a class='page-link' href='javascript:void(0)' value='{{$val}}'>{{$val}}</a>
+                                </li>
+                            {{end}}
+                            <li class='page-item'>
+                                <a class='page-link' href='javascript:void(0)' value='2'>&gt;</a>
+                            </li>
+                        {{else if eq .flag 3}}
+                            <li class='page-item disabled'>
+                                <span class='page-link'>&lt;</span>
+                            </li>
+                            <li class='page-item active'>
+                                <span class='page-link'>1</span>
+                            </li>
+                            <li class='page-item'>
+                                <a class='page-link' href='javascript:void(0)' value='2'>2</a>
+                            </li>
+                            <li class='page-item'>
+                                <a class='page-link' href='javascript:void(0)' value='3'>3</a>
+                            </li>
+                            <li class='page-item'>
+                                <a class='page-link' href='javascript:void(0)' value='4'>4</a>
+                            </li>
+                            <li class='page-item'>
+                                <a class='page-link' href='javascript:void(0)' value='5'>5</a>
+                            </li>
+                            <li class='page-item disabled'><span class='page-link'>...</span></li>
+                                <li class='page-item'>
+                                    <a class='page-link' href='javascript:void(0)' value='{{.pageNumber}}'>{{.pageNumber}}</a>
+                                </li>
+                            <li class='page-item'>
+                                <a class='page-link' href='javascript:void(0)' value='2'>&gt;</a>
+                            </li>
+                        {{else if eq .flag 4}}
+                            <li class='page-item disabled'>
+                                <span class='page-link'>&lt;</span>
+                            </li>
+                            <li class='page-item active'>
+                                <span class='page-link'>1</span>
+                            </li>
+                            <li class='page-item'>
+                                <a class='page-link' href='javascript:void(0)' value='2'>2</a>
+                            </li>
+                            <li class='page-item'>
+                                <a class='page-link' href='javascript:void(0)' value='3'>3</a>
+                            </li>
+                            <li class='page-item'>
+                                <a class='page-link' href='javascript:void(0)' value='4'>4</a>
+                            </li>
+                            <li class='page-item'>
+                                <a class='page-link' href='javascript:void(0)' value='5'>5</a>
+                            </li>
+                            <li class='page-item disabled'><span class='page-link'>...</span></li>
+                            {{range $val:=.pagelist}}
+                                <li class='page-item'>
+                                    <a class='page-link' href='javascript:void(0)' value='{{$val}}'>{{$val}}</a>
+                                </li>
+                            {{end}}
+                            <li class='page-item'>
+                                <a class='page-link' href='javascript:void(0)' value='2'>&gt;</a>
+                            </li>
+                        {{end}}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{template "public/footer" .}}
+{{end}}

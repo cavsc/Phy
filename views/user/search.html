@@ -1,0 +1,122 @@
+{{define "user/search.html"}}
+{{template "public/header" .}}
+<div class="card">
+
+    <div class="card-header"><h5 class="font-weight-bold">Advanced search</h5></div>
+    <div class="card-body text-des">Here, we provide an advanced search content for users, and you can combine two or more keywords to perform a more accurate search. For example: gene + sample ("NPM1" AND "Hela"), gene + condition ("NPM1" AND "Tumor") or several genes ("TP53" OR "JAK1" OR "AKT1"), etc.</div>
+    <div class="card-body alert-primary">Please search the database with one or multiple keywords to find the related information:</div>
+    <div class="card-body">
+      <!-- Advanced search -->
+      <form id="simple_search_form" action="result" method="post" onSubmit="return check_advance_search_form()">
+        <input type="hidden" name="type" value="advance">
+
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-2">
+            <select class="form-control my-select-tag" id="simple_search_tag0" name="simple_search_tag0">
+              <option value="Context">Any Field</option>
+              <option value="uniprotId">UniProt Id</option>
+              <option value="genename">Gene Name</option>
+              <option value="proteinname">Protein Name</option>
+              <option value="func">Function</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <input class="form-control" type="text" placeholder="Please select a type and enter keyword(s)." id="simple_search_input0" name="simple_search_input0">
+          </div>
+          <div class="col-md-1"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-2">
+            <select class="form-control my-select-tag" name="simple_search_link1" id="simple_search_link1">
+              <option value="and">AND</option>
+              <option value="or">OR</option>
+              <option value="and not">NOT</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <select class="form-control my-select-tag" id="simple_search_tag1" name="simple_search_tag1">
+              <option value="Context">Any Field</option>
+              <option value="uniprotId">UniProt Id</option>
+              <option value="genename">Gene Name</option>
+              <option value="proteinname">Protein Name</option>
+              <option value="func">Function</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <input class="form-control" type="text" placeholder="Please select a type and enter keyword(s)." id="simple_search_input1" name="simple_search_input1">
+          </div>
+          <div class="col-md-1">
+            <i class="ri-add-circle-fill"></i>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-2">
+            <select class="form-control my-select-tag" name="simple_search_link2" id="simple_search_link2">
+              <option value="and">AND</option>
+              <option value="or">OR</option>
+              <option value="and not">NOT</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <select class="form-control my-select-tag" id="simple_search_tag2" name="simple_search_tag2">
+              <option value="Context">Any Field</option>
+              <option value="uniprotId">UniProt Id</option>
+              <option value="genename">Gene Name</option>
+              <option value="proteinname">Protein Name</option>
+              <option value="func">Function</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <input class="form-control" type="text" placeholder="Please select a type and enter keyword(s)." id="simple_search_input2" name="simple_search_input2">
+          </div>
+          <div class="col-md-1">
+            <i class="ri-add-circle-fill"></i><i class="ri-indeterminate-circle-fill"></i>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-1"></div>
+
+          <div class="col-md-2">
+            <!-- <select class="form-control my-select-mod" name="simple_search_org" id="simple_search_org">
+              <option value="All">All organisms</option>
+              <option value="Human">Human</option>
+              <option value="Mouse">Mouse</option>
+              <option value="Rat">Rat</option>
+              <option value="Yeast">Yeast</option>
+            </select> -->
+          </div>
+
+          <div class="col-md-2">
+            <!-- <select class="form-control my-select-mod" name="simple_search_mod" id="simple_search_mod">
+              <option value="All">All modifications</option>
+              <option value="Acetylation">Acetylation</option>
+              <option value="Glycosylation">Glycosylation</option>
+              <option value="Metylation">Metylation</option>
+              <option value="Phosphorylation">Phosphorylation</option>
+              <option value="SUMOylation">SUMOylation</option>
+              <option value="Ubiquitylation">Ubiquitylation</option>
+            </select> -->
+          </div>
+          <div class="col-md-2">
+            <button type="button" class="form-control btn btn-mine" id="Example">Example</button>
+          </div>
+          <div class="col-md-2">
+            <button type="reset" class="form-control btn btn-mine">Clear</button>
+          </div>
+          <div class="col-md-2">
+            <button type="submit" class="form-control btn btn-mine">Submit</button>
+          </div>
+        </div>
+      </form>
+      <!-- Advanced search end -->
+    </div>
+
+  </div>
+{{template "public/footer" .}}
+{{end}}

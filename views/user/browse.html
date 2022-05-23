@@ -1,0 +1,133 @@
+{{ define "user/browse.html" }}
+{{template "public/header" .}}
+<div class="card">
+
+  <div class="card-header"><h5 class="font-weight-bold">Browse</h5></div>
+      <br><br>
+      <div id="browse-control-org">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+              <a class="nav-link active" value="Human" href="javascript:void(0);">Human</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" value="Mouse" href="javascript:void(0);">Mouse</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" value="Rat" href="javascript:void(0);">Rat</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" value="Yeast" href="javascript:void(0);">Yeast</a>
+          </li>
+        </ul>
+      </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-4"><div class="browse-stat-plot" id="gene-stat-plot" _echarts_instance_="ec_1650269278309" style="-webkit-tap-highlight-color: transparent; user-select: none; position: relative;"><div style="position: relative; overflow: hidden; width: 336px; height: 300px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;"><canvas data-zr-dom-id="zr_0" width="336" height="300" style="position: absolute; left: 0px; top: 0px; width: 336px; height: 300px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div><div style="position: absolute; display: none; border-style: solid; white-space: nowrap; z-index: 9999999; transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s, top 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s; background-color: rgba(50, 50, 50, 0.7); border-width: 0px; border-color: rgb(51, 51, 51); border-radius: 4px; color: rgb(255, 255, 255); font: 14px / 21px &quot;Microsoft YaHei&quot;; text-align: left; padding: 5px; left: 136px; top: 184px; pointer-events: none;">Glycosylation<br><span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:red;"></span>Total Number: 2,819</div></div></div>
+      <div class="col-md-4"><div class="browse-stat-plot" id="condition-stat-plot" _echarts_instance_="ec_1650269278310" style="-webkit-tap-highlight-color: transparent; user-select: none; position: relative;"><div style="position: relative; overflow: hidden; width: 336px; height: 300px; padding: 0px; margin: 0px; border-width: 0px;"><canvas data-zr-dom-id="zr_0" width="336" height="300" style="position: absolute; left: 0px; top: 0px; width: 336px; height: 300px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div><div></div></div></div>
+      <div class="col-md-4"><div class="browse-stat-plot" id="sample-stat-plot" _echarts_instance_="ec_1650269278311" style="-webkit-tap-highlight-color: transparent; user-select: none; position: relative;"><div style="position: relative; overflow: hidden; width: 336px; height: 300px; padding: 0px; margin: 0px; border-width: 0px;"><canvas data-zr-dom-id="zr_0" width="336" height="300" style="position: absolute; left: 0px; top: 0px; width: 336px; height: 300px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div><div></div></div></div>
+    </div>
+
+  </div>
+  <div class="card-body">
+      <div id="browse-control-mod">
+        <ul class="nav nav-tabs"><li class="nav-item">                    <a class="nav-link active" value="Acetylation" href="javascript:void(0);">Acetylation</a>                </li><li class="nav-item">                    <a class="nav-link " value="Glycosylation" href="javascript:void(0);">Glycosylation</a>                </li><li class="nav-item">                    <a class="nav-link " value="Methylation" href="javascript:void(0);">Methylation</a>                </li><li class="nav-item">                    <a class="nav-link " value="Phosphorylation" href="javascript:void(0);">Phosphorylation</a>                </li><li class="nav-item">                    <a class="nav-link " value="SUMOylation" href="javascript:void(0);">SUMOylation</a>                </li><li class="nav-item">                    <a class="nav-link " value="Ubiquitylation" href="javascript:void(0);">Ubiquitylation</a>                </li></ul>
+      </div>
+  </div>
+
+  <div class="card-body">
+    <span class="sub-title">Browse for genes with <span class="chooseMod des-highlight">Acetylation</span> in <span class="chooseOrg des-highlight">Human</span></span>
+    <br><br>
+    <div class="card">
+      <div class="card-body"><div class="tab-pane" id="gene-fword"><span class="browseFilter active" value="A">A</span><span class="browseFilter " value="B">B</span><span class="browseFilter " value="C">C</span><span class="browseFilter " value="D">D</span><span class="browseFilter " value="E">E</span><span class="browseFilter " value="F">F</span><span class="browseFilter " value="G">G</span><span class="browseFilter " value="H">H</span><span class="browseFilter " value="I">I</span><span class="browseFilter " value="J">J</span><span class="browseFilter " value="K">K</span><span class="browseFilter " value="L">L</span><span class="browseFilter " value="M">M</span><span class="browseFilter " value="N">N</span><span class="browseFilter " value="O">O</span><span class="browseFilter " value="P">P</span><span class="browseFilter " value="Q">Q</span><span class="browseFilter " value="R">R</span><span class="browseFilter " value="S">S</span><span class="browseFilter " value="T">T</span><span class="browseFilter " value="U">U</span><span class="browseFilter " value="V">V</span><span class="browseFilter " value="W">W</span><span class="browseFilter " value="X">X</span><span class="browseFilter " value="Y">Y</span><span class="browseFilter " value="Z">Z</span></div></div>
+    </div>
+    <br><br>
+    <div>
+      <span id="gene-pageInfo">Showing 1 to 25 of 587 genes</span>, 
+      <select id="gene-selectColNumber" class="selectRowNumber">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="5" selected="selected">5</option>
+        <option value="10">10</option>
+      </select> columns per row, 
+      <select id="gene-selectRowNumber" class="selectRowNumber">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+      </select> rows per page.
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover" id="gene-option-show"><tbody><tr><td><span class="browseRes">A1BG</span></td><td><span class="browseRes">A2M</span></td><td><span class="browseRes">AAAS</span></td><td><span class="browseRes">AACS</span></td><td><span class="browseRes">AAGAB</span></td></tr><tr><td><span class="browseRes">AAK1</span></td><td><span class="browseRes">AAMDC</span></td><td><span class="browseRes">AAMP</span></td><td><span class="browseRes">AAR2</span></td><td><span class="browseRes">AARS1</span></td></tr><tr><td><span class="browseRes">AARS2</span></td><td><span class="browseRes">AARSD1</span></td><td><span class="browseRes">AASDH</span></td><td><span class="browseRes">AASDHPPT</span></td><td><span class="browseRes">AASS</span></td></tr><tr><td><span class="browseRes">AATF</span></td><td><span class="browseRes">ABCA13</span></td><td><span class="browseRes">ABCA3</span></td><td><span class="browseRes">ABCA5</span></td><td><span class="browseRes">ABCA9</span></td></tr><tr><td><span class="browseRes">ABCB10</span></td><td><span class="browseRes">ABCB6</span></td><td><span class="browseRes">ABCB7</span></td><td><span class="browseRes">ABCC1</span></td><td><span class="browseRes">ABCC2</span></td></tr></tbody></table>
+    </div>
+    <div class="row">
+      <div class="col-md-6"></div>
+      <div class="col-md-6 buttonInfo" id="gene-buttonInfo"><nav aria-label="Page navigation" class="float-right"><ul class="pagination"><li class="page-item disabled"><span class="page-link">&lt;</span></li><li class="page-item active"><span class="page-link">1</span></li><li class="page-item"><a class="page-link" href="javascript:void(0)" value="2">2</a></li><li class="page-item"><a class="page-link" href="javascript:void(0)" value="3">3</a></li><li class="page-item"><a class="page-link" href="javascript:void(0)" value="4">4</a></li><li class="page-item"><a class="page-link" href="javascript:void(0)" value="5">5</a></li><li class="page-item disabled"><span class="page-link">...</span></li><li class="page-item"><a class="page-link" href="javascript:void(0)" value="24">24</a></li><li class="page-item"><a class="page-link" href="javascript:void(0)" value="2">&gt;</a></li></ul></nav></div>
+    </div>
+    <hr>
+    <br><br>
+
+    <span class="sub-title">Browse for conditions with <span class="chooseMod des-highlight">Acetylation</span> in <span class="chooseOrg des-highlight">Human</span></span>
+    <br><br>
+    <div class="card">
+      <div class="card-body"><div class="tab-pane" id="condition-fword"><span class="browseFilter active" value="A">A</span><span class="browseFilter " value="B">B</span><span class="browseFilter " value="C">C</span><span class="browseFilter " value="D">D</span><span class="browseFilter " value="E">E</span><span class="browseFilter " value="G">G</span><span class="browseFilter " value="H">H</span><span class="browseFilter " value="I">I</span><span class="browseFilter " value="J">J</span><span class="browseFilter " value="L">L</span><span class="browseFilter " value="M">M</span><span class="browseFilter " value="N">N</span><span class="browseFilter " value="P">P</span><span class="browseFilter " value="R">R</span><span class="browseFilter " value="S">S</span><span class="browseFilter " value="T">T</span><span class="browseFilter " value="U">U</span><span class="browseFilter " value="V">V</span><span class="browseFilter " value="Y">Y</span></div></div>
+    </div>
+    <br><br>
+    
+    <div>
+      <span id="condition-pageInfo">Showing 1 to 10 of 11 conditions</span>, 
+      <select id="condition-selectColNumber" class="selectRowNumber">
+        <option value="1">1</option>
+        <option value="2" selected="selected">2</option>
+        <option value="5">5</option>
+      </select> columns per row, 
+      <select id="condition-selectRowNumber" class="selectRowNumber">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+      </select> rows per page.
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover" id="condition-option-show"><tbody><tr><td><span class="browseRes">Abexinostat 16h/Ctr</span></td><td><span class="browseRes">Apicidin 16h/Ctr</span></td></tr><tr><td><span class="browseRes">Aspirin 15min/8h</span></td><td><span class="browseRes">Aspirin 15min/Ctr</span></td></tr><tr><td><span class="browseRes">aspirin 8h+recovery 0.25h/aspirin 8h</span></td><td><span class="browseRes">aspirin 8h+recovery 0.5h/aspirin 8h</span></td></tr><tr><td><span class="browseRes">aspirin 8h+recovery 0.5h/aspirin 8h+recovery 0.25h</span></td><td><span class="browseRes">Aspirin 8h/Ctr</span></td></tr><tr><td><span class="browseRes">aspirin d3/aspirin</span></td><td><span class="browseRes">aspirin d3/Ctr</span></td></tr></tbody></table>
+    </div>
+    <div class="row">
+      <div class="col-md-6"></div>
+      <div class="col-md-6 buttonInfo" id="condition-buttonInfo"><nav aria-label="Page navigation" class="float-right"><ul class="pagination"><li class="page-item disabled"><span class="page-link">&lt;</span></li><li class="page-item active"><span class="page-link">1</span></li><li class="page-item"><a class="page-link" href="javascript:void(0)" value="2">2</a></li><li class="page-item"><a class="page-link" href="javascript:void(0)" value="2">&gt;</a></li></ul></nav></div>
+    </div>
+    <hr>
+    <br><br>
+    
+    <span class="sub-title">Browse for samples with <span class="chooseMod des-highlight">Acetylation</span> in <span class="chooseOrg des-highlight">Human</span></span>
+    <br><br>
+    <div class="card">
+      <div class="card-body"><div class="tab-pane" id="sample-fword"><span class="browseFilter active" value="A">A</span><span class="browseFilter " value="B">B</span><span class="browseFilter " value="C">C</span><span class="browseFilter " value="D">D</span><span class="browseFilter " value="H">H</span><span class="browseFilter " value="J">J</span><span class="browseFilter " value="M">M</span><span class="browseFilter " value="O">O</span><span class="browseFilter " value="P">P</span><span class="browseFilter " value="S">S</span><span class="browseFilter " value="U">U</span></div></div>
+    </div>
+    <br><br>
+    
+    <div>
+      <span id="sample-pageInfo">Showing 1 to 1 of 1 samples</span>, 
+      <select id="sample-selectColNumber" class="selectRowNumber">
+        <option value="1">1</option>
+        <option value="2" selected="selected">2</option>
+        <option value="5">5</option>
+      </select> columns per row, 
+      <select id="sample-selectRowNumber" class="selectRowNumber">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+      </select> rows per page.
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover" id="sample-option-show"><tbody><tr><td><span class="browseRes">A-549</span></td><td></td></tr></tbody></table>
+    </div>
+    <div class="row">
+      <div class="col-md-6"></div>
+      <div class="col-md-6 buttonInfo" id="sample-buttonInfo"></div>
+    </div>
+    <hr>
+    <br><br>
+
+  </div>  
+
+</div>
+{{template "public/footer" .}}
+{{ end }}
